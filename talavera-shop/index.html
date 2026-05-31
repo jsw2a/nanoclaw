@@ -3,12 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Ruth — Talavera de Puebla</title>
-  <meta name="description" content="Para Ruth — hand-painted Talavera pottery from Puebla, México. Pitchers, vases, dishes, tumblers and bowls, each thrown and painted by hand." />
+
+  <!-- ===========================================================
+       NOTE: canonical domain is a PLACEHOLDER — replace every
+       occurrence of https://pararuth.com with your real URL
+       (here, in sitemap.xml, robots.txt, and the JSON-LD below).
+       =========================================================== -->
+  <title>Para Ruth — Hand-Painted Talavera Pottery from Puebla, México</title>
+  <meta name="description" content="Para Ruth sells hand-painted Talavera pottery from Puebla, México — pitchers, bud vases, trinket dishes, tumblers and nesting bowls. Each piece is thrown on the wheel and painted by hand by artisan families. Lead-free, food-safe glaze. No two pieces alike." />
+  <link rel="canonical" href="https://pararuth.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#16324f" />
+  <meta name="author" content="Para Ruth" />
+  <meta name="keywords" content="Talavera pottery, Talavera de Puebla, hand-painted Mexican pottery, Mexican ceramics, cobalt pottery, terracotta dishes, artisan pottery, lead-free glaze" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Para Ruth" />
+  <meta property="og:title" content="Para Ruth — Hand-Painted Talavera Pottery from Puebla" />
+  <meta property="og:description" content="Hand-painted Talavera pottery from Puebla, México — pitchers, vases, dishes, tumblers and bowls. Thrown and painted by hand, lead-free and food-safe. No two pieces alike." />
+  <meta property="og:url" content="https://pararuth.com/" />
+  <meta property="og:image" content="https://pararuth.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Para Ruth — hand-painted Talavera de Puebla" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Para Ruth — Hand-Painted Talavera Pottery from Puebla" />
+  <meta name="twitter:description" content="Hand-painted Talavera pottery from Puebla, México. Thrown and painted by hand, lead-free and food-safe. No two pieces alike." />
+  <meta name="twitter:image" content="https://pararuth.com/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="Para Ruth — hand-painted Talavera de Puebla" />
+
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/hanken.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Structured data: Organization + Store -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "Store"],
+    "name": "Para Ruth",
+    "url": "https://pararuth.com/",
+    "logo": "https://pararuth.com/assets/mark.svg",
+    "image": "https://pararuth.com/assets/og-image.png",
+    "description": "Hand-painted Talavera pottery from Puebla, México. Pitchers, vases, dishes, tumblers and bowls, each thrown and painted by hand by artisan families.",
+    "slogan": "Talavera pintada a mano",
+    "knowsAbout": ["Talavera de Puebla", "Mexican pottery", "hand-painted ceramics", "Mexican folk art"],
+    "areaServed": "Worldwide"
+  }
+  </script>
+
+  <!-- Structured data: the collection as an ItemList of Products -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "The Para Ruth Collection",
+    "itemListElement": [
+      {
+        "@type": "ListItem", "position": 1,
+        "item": {
+          "@type": "Product", "name": "Talavera Pitchers (Jarras)",
+          "url": "https://pararuth.com/#pitchers",
+          "image": "https://pararuth.com/images/pitchers.jpg",
+          "description": "Hand-thrown Talavera pitchers in cobalt or warm clay, painted by hand in Puebla. A pour-worthy centrepiece for water, wine, or branches.",
+          "material": "Glazed earthenware", "countryOfOrigin": "MX",
+          "brand": { "@type": "Brand", "name": "Para Ruth" },
+          "offers": { "@type": "Offer", "price": "68.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://pararuth.com/#pitchers" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 2,
+        "item": {
+          "@type": "Product", "name": "Talavera Bud Vases (Floreros)",
+          "url": "https://pararuth.com/#vases",
+          "image": "https://pararuth.com/images/vases.jpg",
+          "description": "Small hand-painted Talavera bud vases for a single stem or a handful of wildflowers, in cobalt florals or warm clay.",
+          "material": "Glazed earthenware", "countryOfOrigin": "MX",
+          "brand": { "@type": "Brand", "name": "Para Ruth" },
+          "offers": { "@type": "Offer", "price": "34.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://pararuth.com/#vases" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 3,
+        "item": {
+          "@type": "Product", "name": "Talavera Trinket Dishes (Platitos)",
+          "url": "https://pararuth.com/#dishes",
+          "image": "https://pararuth.com/images/dishes.jpg",
+          "description": "Hand-painted Talavera trinket dishes for rings, salt, or olives — each a tiny painted medallion.",
+          "material": "Glazed earthenware", "countryOfOrigin": "MX",
+          "brand": { "@type": "Brand", "name": "Para Ruth" },
+          "offers": { "@type": "Offer", "price": "22.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://pararuth.com/#dishes" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 4,
+        "item": {
+          "@type": "Product", "name": "Talavera Tumblers (Vasos), set of two",
+          "url": "https://pararuth.com/#tumblers",
+          "image": "https://pararuth.com/images/tumblers.jpg",
+          "description": "Hand-painted Talavera tumblers for mezcal, agua fresca, or café — sold as a pair, cobalt and clay.",
+          "material": "Glazed earthenware", "countryOfOrigin": "MX",
+          "brand": { "@type": "Brand", "name": "Para Ruth" },
+          "offers": { "@type": "Offer", "price": "28.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://pararuth.com/#tumblers" }
+        }
+      },
+      {
+        "@type": "ListItem", "position": 5,
+        "item": {
+          "@type": "Product", "name": "Talavera Nesting Bowls (Tazones)",
+          "url": "https://pararuth.com/#bowls",
+          "image": "https://pararuth.com/images/bowls.jpg",
+          "description": "Hand-painted Talavera nesting bowls for serving and prep, mixing bold blue florals with creamy clay relief.",
+          "material": "Glazed earthenware", "countryOfOrigin": "MX",
+          "brand": { "@type": "Brand", "name": "Para Ruth" },
+          "offers": { "@type": "Offer", "price": "56.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://pararuth.com/#bowls" }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured data: FAQ (strong GEO signal — gives answer engines clean Q&A) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Talavera pottery?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Talavera is a hand-painted tin-glazed earthenware made in Puebla, México, in a tradition more than four centuries old. Each piece is thrown, glazed, and painted entirely by hand before a second firing fixes the colour. Para Ruth's Talavera is painted in cobalt blue and warm terracotta by artisan families in Puebla." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Para Ruth's Talavera pottery food-safe?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Para Ruth's pieces use a lead-free glaze and are food-safe and oven-safe. We recommend hand-washing to keep the hand-painted colours vivid." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Para Ruth pottery made?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every Para Ruth piece is made and hand-painted in Puebla, México, bought in small batches directly from family workshops." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the pieces identical?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Because each piece is painted freehand, no two are exactly alike — each carries the small, lovely irregularities of a human hand." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -19,7 +167,9 @@
       <img src="assets/mark.svg" alt="" width="26" height="26" />
       <span>Para Ruth</span>
     </a>
-    <nav class="nav" id="nav" aria-label="Primary"></nav>
+    <nav class="nav" aria-label="Primary">
+      <a href="#pitchers">Pitchers</a><a href="#vases">Bud Vases</a><a href="#dishes">Trinket Dishes</a><a href="#tumblers">Tumblers</a><a href="#bowls">Nesting Bowls</a><a href="#story">Story</a>
+    </nav>
     <button class="bag" id="cartBtn" aria-label="Open bag">Bag <span id="cartCount">(0)</span></button>
   </header>
 
@@ -44,7 +194,7 @@
     <div class="hero-type">
       <p class="kicker">Talavera pintada a mano</p>
       <h1>Para<em>Ruth</em></h1>
-      <p class="hero-lede">Pottery thrown on the wheel and painted, petal by petal, by the artisan families of Puebla. A small, collected table — no two pieces alike.</p>
+      <p class="hero-lede">Hand-painted Talavera pottery, thrown on the wheel and painted petal by petal by the artisan families of Puebla, México. A small, collected table — no two pieces alike.</p>
       <a class="link-underline" href="#index">Explore the collection <span aria-hidden="true">→</span></a>
     </div>
     <span class="hero-scroll" aria-hidden="true">Scroll</span>
@@ -63,8 +213,118 @@
     <h2>Five pieces<br />for the table</h2>
   </header>
 
-  <!-- Pieces injected by JS -->
-  <main id="wares"></main>
+  <!-- Pieces — server-rendered as real HTML; JS only enhances (wires the bag) -->
+  <main id="wares">
+    <article class="piece" id="pitchers">
+      <span class="piece-index" aria-hidden="true">01</span>
+      <figure class="piece-figure">
+        <span class="piece-cat">Jarra · Pitcher</span>
+        <img src="images/pitchers.jpg" alt="Hand-painted Talavera pitchers in cobalt and terracotta" width="1000" height="1250" onerror="this.onerror=null;this.src='assets/art-pitchers.svg'" />
+        <figcaption class="piece-caption">Loza vidriada · pintada a mano · pieza única</figcaption>
+      </figure>
+      <div class="piece-detail">
+        <h3 class="piece-name">Jarras <em>Pitchers</em></h3>
+        <p class="piece-desc">Thrown on the wheel and painted in cobalt or warm clay. A pour-worthy centrepiece for water, wine, or a fistful of branches.</p>
+        <dl class="piece-spec">
+          <div><dt>Material</dt><dd>Glazed earthenware</dd></div>
+          <div><dt>Origin</dt><dd>Puebla, MX</dd></div>
+          <div><dt>Size</dt><dd>≈ 22 cm</dd></div>
+        </dl>
+        <div class="piece-buy">
+          <span class="piece-price">$68</span>
+          <button class="btn-line add" data-id="pitchers">Add to bag</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="piece flip" id="vases">
+      <span class="piece-index" aria-hidden="true">02</span>
+      <figure class="piece-figure">
+        <span class="piece-cat">Florero · Vase</span>
+        <img src="images/vases.jpg" alt="Hand-painted Talavera bud vases holding white flowers" width="1000" height="1250" onerror="this.onerror=null;this.src='assets/art-vases.svg'" />
+        <figcaption class="piece-caption">Loza vidriada · pintada a mano · pieza única</figcaption>
+      </figure>
+      <div class="piece-detail">
+        <h3 class="piece-name">Floreros <em>Bud Vases</em></h3>
+        <p class="piece-desc">Small vessels for a single stem or a gathered handful of wildflowers — each a little painted world of its own.</p>
+        <dl class="piece-spec">
+          <div><dt>Material</dt><dd>Glazed earthenware</dd></div>
+          <div><dt>Origin</dt><dd>Puebla, MX</dd></div>
+          <div><dt>Size</dt><dd>14–18 cm</dd></div>
+        </dl>
+        <div class="piece-buy">
+          <span class="piece-price">$34</span>
+          <button class="btn-line add" data-id="vases">Add to bag</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="piece" id="dishes">
+      <span class="piece-index" aria-hidden="true">03</span>
+      <figure class="piece-figure">
+        <span class="piece-cat">Platito · Dish</span>
+        <img src="images/dishes.jpg" alt="Hand-painted Talavera trinket dishes in blue and terracotta" width="1000" height="1250" onerror="this.onerror=null;this.src='assets/art-dishes.svg'" />
+        <figcaption class="piece-caption">Loza vidriada · pintada a mano · pieza única</figcaption>
+      </figure>
+      <div class="piece-detail">
+        <h3 class="piece-name">Platitos <em>Trinket Dishes</em></h3>
+        <p class="piece-desc">Catch-alls for rings, salt, olives, or a stray earring. Each a tiny hand-painted medallion — the easiest way to begin a collection.</p>
+        <dl class="piece-spec">
+          <div><dt>Material</dt><dd>Glazed earthenware</dd></div>
+          <div><dt>Origin</dt><dd>Puebla, MX</dd></div>
+          <div><dt>Size</dt><dd>≈ 10 cm</dd></div>
+        </dl>
+        <div class="piece-buy">
+          <span class="piece-price">$22</span>
+          <button class="btn-line add" data-id="dishes">Add to bag</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="piece flip" id="tumblers">
+      <span class="piece-index" aria-hidden="true">04</span>
+      <figure class="piece-figure">
+        <span class="piece-cat">Vaso · Tumbler</span>
+        <img src="images/tumblers.jpg" alt="Six hand-painted Talavera tumblers in cobalt and clay" width="1000" height="1250" onerror="this.onerror=null;this.src='assets/art-tumblers.svg'" />
+        <figcaption class="piece-caption">Loza vidriada · pintada a mano · pieza única</figcaption>
+      </figure>
+      <div class="piece-detail">
+        <h3 class="piece-name">Vasos <em>Tumblers</em></h3>
+        <p class="piece-desc">Stout little cups for mezcal, agua fresca, or the morning café. Sold as a pair — the cobalt and the clay, side by side.</p>
+        <dl class="piece-spec">
+          <div><dt>Material</dt><dd>Glazed earthenware</dd></div>
+          <div><dt>Origin</dt><dd>Puebla, MX</dd></div>
+          <div><dt>Size</dt><dd>Set of two</dd></div>
+        </dl>
+        <div class="piece-buy">
+          <span class="piece-price">$28</span>
+          <button class="btn-line add" data-id="tumblers">Add to bag</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="piece" id="bowls">
+      <span class="piece-index" aria-hidden="true">05</span>
+      <figure class="piece-figure">
+        <span class="piece-cat">Tazón · Bowl</span>
+        <img src="images/bowls.jpg" alt="Hand-painted Talavera nesting bowls in blue florals and clay" width="1000" height="1250" onerror="this.onerror=null;this.src='assets/art-bowls.svg'" />
+        <figcaption class="piece-caption">Loza vidriada · pintada a mano · pieza única</figcaption>
+      </figure>
+      <div class="piece-detail">
+        <h3 class="piece-name">Tazones <em>Nesting Bowls</em></h3>
+        <p class="piece-desc">Serving and prep bowls that nest neatly together. Mix the bold blue florals with the creamy clay relief — too lovely to put away.</p>
+        <dl class="piece-spec">
+          <div><dt>Material</dt><dd>Glazed earthenware</dd></div>
+          <div><dt>Origin</dt><dd>Puebla, MX</dd></div>
+          <div><dt>Size</dt><dd>12–24 cm</dd></div>
+        </dl>
+        <div class="piece-buy">
+          <span class="piece-price">$56</span>
+          <button class="btn-line add" data-id="bowls">Add to bag</button>
+        </div>
+      </div>
+    </article>
+  </main>
 
   <!-- Story (inverted cobalt) -->
   <section class="story" id="story">

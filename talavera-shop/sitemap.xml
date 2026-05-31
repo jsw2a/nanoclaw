@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://pararuth.com with your real domain. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://pararuth.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://pararuth.com/images/pitchers.jpg</image:loc><image:title>Talavera Pitchers (Jarras)</image:title></image:image>
+    <image:image><image:loc>https://pararuth.com/images/vases.jpg</image:loc><image:title>Talavera Bud Vases (Floreros)</image:title></image:image>
+    <image:image><image:loc>https://pararuth.com/images/dishes.jpg</image:loc><image:title>Talavera Trinket Dishes (Platitos)</image:title></image:image>
+    <image:image><image:loc>https://pararuth.com/images/tumblers.jpg</image:loc><image:title>Talavera Tumblers (Vasos)</image:title></image:image>
+    <image:image><image:loc>https://pararuth.com/images/bowls.jpg</image:loc><image:title>Talavera Nesting Bowls (Tazones)</image:title></image:image>
+  </url>
+</urlset>

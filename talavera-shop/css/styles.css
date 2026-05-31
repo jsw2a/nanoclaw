@@ -46,6 +46,8 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+/* keep anchored sections clear of the sticky masthead */
+#about, #index, #pitchers, #vases, #dishes, #tumblers, #bowls, #story, #news { scroll-margin-top: 84px; }
 body {
   margin: 0;
   font-family: var(--sans);
