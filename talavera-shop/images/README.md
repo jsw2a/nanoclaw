@@ -1,8 +1,8 @@
 # Product photos
 
-The site renders beautifully out of the box using hand-drawn Talavera SVG
-illustrations (in `../assets/`). To swap in your real product photography,
-just drop JPGs into this folder with these exact names:
+The real product photography is now in place (cropped to 4:5, ~1000×1250).
+If you ever want to replace a photo, just overwrite the JPG in this folder
+using these exact names:
 
 | File | Photo |
 |------|-------|
