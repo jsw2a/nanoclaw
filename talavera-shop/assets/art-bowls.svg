@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <rect width="800" height="1000" fill="#f1e8d8"/>
+  <rect y="720" width="800" height="280" fill="#e6d9bf"/>
+  <!-- large cobalt bowl -->
+  <g transform="translate(470 470)">
+    <path d="M-200 -40 q200 -60 400 0 q-30 220 -200 230 q-170 -10 -200 -230Z" fill="#eef4fc" stroke="#1c3aa0" stroke-width="6"/>
+    <ellipse cx="0" cy="-40" rx="200" ry="46" fill="#dfe9f8" stroke="#1c3aa0" stroke-width="6"/>
+    <g fill="#1c3aa0">
+      <circle cx="0" cy="40" r="26"/>
+      <g>
+        <path d="M0 -30 q28 50 0 76 q-28 -26 0 -76Z"/>
+        <path d="M0 110 q28 50 0 76 q-28 -26 0 -76Z"/>
+        <path d="M-110 40 q50 28 76 0 q-26 -28 -76 0Z"/>
+        <path d="M110 40 q-50 28 -76 0 q26 -28 76 0Z"/>
+      </g>
+    </g>
+  </g>
+  <!-- small terracotta bowl -->
+  <g transform="translate(210 640)">
+    <path d="M-120 -24 q120 -36 240 0 q-18 130 -120 138 q-102 -8 -120 -138Z" fill="#c87a4c" stroke="#a4592f" stroke-width="5"/>
+    <ellipse cx="0" cy="-24" rx="120" ry="28" fill="#b96c40" stroke="#a4592f" stroke-width="5"/>
+    <g fill="#f4ece0">
+      <circle cx="0" cy="30" r="14"/>
+      <ellipse cx="0" cy="-22" rx="8" ry="18"/>
+      <ellipse cx="-46" cy="30" rx="18" ry="8"/>
+      <ellipse cx="46" cy="30" rx="18" ry="8"/>
+    </g>
+  </g>
+</svg>

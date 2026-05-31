@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Talavera — Hand-Painted Mexican Pottery</title>
+  <meta name="description" content="Hand-painted Talavera pottery from Puebla, Mexico. Pitchers, vases, bowls, dishes and tumblers — each piece made and painted by hand." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Announcement -->
+  <div class="announce">Free shipping on orders over $95 · Each piece hand-painted in Puebla, México</div>
+
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <a class="brand" href="#top">
+      <img src="assets/logo.svg" alt="" width="40" height="40" />
+      <span class="brand-name">Casa&nbsp;Talavera</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#shop">Shop</a>
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+      <a href="#care">Care</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      <span class="cart-ico">🛍</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Hecho a mano · Puebla, México</p>
+      <h1>Pottery painted<br />by hand, made<br />to be lived with.</h1>
+      <p class="lede">A small collection of Talavera pitchers, vases, bowls and dishes — each one glazed and brush-painted by artisan families, no two ever quite alike.</p>
+      <a class="btn btn-primary" href="#shop">Shop the collection</a>
+    </div>
+    <div class="hero-art">
+      <img src="images/pitchers.jpg" alt="A grouping of hand-painted Talavera pitchers in cobalt blue and terracotta"
+           onerror="this.onerror=null;this.src='assets/art-pitchers.svg'" />
+      <span class="hero-tile" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true"></div>
+
+  <!-- Marquee values -->
+  <section class="values">
+    <div><strong>Hand-painted</strong><span>Every petal brushed by hand</span></div>
+    <div><strong>Lead-free glaze</strong><span>Food &amp; oven safe</span></div>
+    <div><strong>One of a kind</strong><span>No two pieces match</span></div>
+    <div><strong>Fairly made</strong><span>Direct from artisan families</span></div>
+  </section>
+
+  <!-- Shop -->
+  <section class="shop" id="shop">
+    <header class="section-head">
+      <p class="eyebrow">The Collection</p>
+      <h2>Five everyday pieces</h2>
+      <p class="section-sub">Mix the cobalt and the terracotta — they're made to be gathered together.</p>
+    </header>
+
+    <div class="grid" id="productGrid"><!-- products injected by JS --></div>
+  </section>
+
+  <!-- Collection banner -->
+  <section class="banner" id="collection">
+    <div class="banner-art">
+      <img src="images/dishes.jpg" alt="Hand-painted trinket dishes arranged on linen"
+           onerror="this.onerror=null;this.src='assets/art-dishes.svg'" />
+    </div>
+    <div class="banner-copy">
+      <p class="eyebrow">Cobalt &amp; Clay</p>
+      <h2>The classic blue, and the warm terracotta</h2>
+      <p>Our two signature palettes. The cobalt-on-cream is the talavera you know — bold floral medallions on bright white. The terracotta is <em>barro</em>, the natural red clay, with creamy raised-dot petals piped on by hand.</p>
+      <a class="btn btn-ghost" href="#shop">Browse both palettes</a>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <p class="eyebrow">Our Story</p>
+      <h2>From the workshops of Puebla</h2>
+      <p>Talavera has been made the same way for more than four centuries — clay thrown, dried, glazed, and painted entirely by hand before a second firing fixes the color forever. We work directly with a handful of family workshops, buying small batches and paying fairly, so the craft and the people who keep it alive can thrive.</p>
+      <p>Because each piece is painted freehand, yours will carry the small, lovely irregularities of a human hand. That's not a flaw — it's the signature.</p>
+    </div>
+  </section>
+
+  <!-- Care -->
+  <section class="care" id="care">
+    <header class="section-head">
+      <p class="eyebrow">Living With It</p>
+      <h2>How to care for your pottery</h2>
+    </header>
+    <div class="care-grid">
+      <div class="care-card"><h3>Wash gently</h3><p>Hand-wash with mild soap to keep the glaze and colors vivid for generations.</p></div>
+      <div class="care-card"><h3>Use it daily</h3><p>Our glazes are lead-free and food-safe — these pieces are made for the table, not the shelf.</p></div>
+      <div class="care-card"><h3>Mind the heat</h3><p>Oven-safe to 350°F. Avoid sudden temperature changes, as with any fine ceramic.</p></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="news">
+    <div class="news-inner">
+      <h2>Join the table</h2>
+      <p>New small-batch arrivals, restock notes, and the occasional story from Puebla.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" required placeholder="your@email.com" aria-label="Email address" />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+      <p class="news-note" id="newsNote" hidden>¡Gracias! You're on the list.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="foot-col brand-col">
+      <a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="36" height="36" /><span class="brand-name">Casa&nbsp;Talavera</span></a>
+      <p>Hand-painted Mexican pottery, made to be lived with.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Shop</h4>
+      <a href="#shop">Pitchers</a><a href="#shop">Vases</a><a href="#shop">Bowls</a><a href="#shop">Dishes</a><a href="#shop">Tumblers</a>
+    </div>
+    <div class="foot-col">
+      <h4>About</h4>
+      <a href="#story">Our Story</a><a href="#care">Care Guide</a><a href="#collection">Collection</a>
+    </div>
+    <div class="foot-col">
+      <h4>Help</h4>
+      <a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a>
+    </div>
+    <p class="copyright">© <span id="year"></span> Casa Talavera · Hecho con cariño en México</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+    <header class="cart-head">
+      <h3>Your bag</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">×</button>
+    </header>
+    <div class="cart-items" id="cartItems"></div>
+    <footer class="cart-foot">
+      <div class="cart-total"><span>Subtotal</span><strong id="cartTotal">$0</strong></div>
+      <button class="btn btn-primary cart-checkout">Checkout</button>
+    </footer>
+  </aside>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
