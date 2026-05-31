@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Bold seamless Talavera tile — cobalt medallions on cream (Puebla style) -->
+  <defs>
+    <path id="pet" d="M0,-18 C13,-42 13,-58 0,-76 C-13,-58 -13,-42 0,-18 Z" fill="#1f3c9c"/>
+    <path id="pin" d="M0,-14 C7,-30 7,-42 0,-54 C-7,-42 -7,-30 0,-14 Z" fill="#1f3c9c"/>
+    <g id="med">
+      <use xlink:href="#pet" transform="rotate(0)"/>
+      <use xlink:href="#pet" transform="rotate(45)"/>
+      <use xlink:href="#pet" transform="rotate(90)"/>
+      <use xlink:href="#pet" transform="rotate(135)"/>
+      <use xlink:href="#pet" transform="rotate(180)"/>
+      <use xlink:href="#pet" transform="rotate(225)"/>
+      <use xlink:href="#pet" transform="rotate(270)"/>
+      <use xlink:href="#pet" transform="rotate(315)"/>
+      <use xlink:href="#pin" transform="rotate(22.5)"/>
+      <use xlink:href="#pin" transform="rotate(67.5)"/>
+      <use xlink:href="#pin" transform="rotate(112.5)"/>
+      <use xlink:href="#pin" transform="rotate(157.5)"/>
+      <use xlink:href="#pin" transform="rotate(202.5)"/>
+      <use xlink:href="#pin" transform="rotate(247.5)"/>
+      <use xlink:href="#pin" transform="rotate(292.5)"/>
+      <use xlink:href="#pin" transform="rotate(337.5)"/>
+      <circle r="15" fill="none" stroke="#1f3c9c" stroke-width="3.5"/>
+      <circle r="6.5" fill="#1f3c9c"/>
+      <g fill="#c2622f">
+        <circle cx="0" cy="-60" r="4.5"/>
+        <circle cx="0" cy="60" r="4.5"/>
+        <circle cx="-60" cy="0" r="4.5"/>
+        <circle cx="60" cy="0" r="4.5"/>
+      </g>
+    </g>
+    <g id="small">
+      <use xlink:href="#pin" transform="rotate(0) scale(.78)"/>
+      <use xlink:href="#pin" transform="rotate(90) scale(.78)"/>
+      <use xlink:href="#pin" transform="rotate(180) scale(.78)"/>
+      <use xlink:href="#pin" transform="rotate(270) scale(.78)"/>
+      <use xlink:href="#pin" transform="rotate(45) scale(.5)"/>
+      <use xlink:href="#pin" transform="rotate(135) scale(.5)"/>
+      <use xlink:href="#pin" transform="rotate(225) scale(.5)"/>
+      <use xlink:href="#pin" transform="rotate(315) scale(.5)"/>
+      <circle r="5" fill="#1f3c9c"/>
+    </g>
+  </defs>
+
+  <rect width="300" height="300" fill="#f4ead6"/>
+  <g stroke="#d8c39a" stroke-width="2.5" opacity="0.5">
+    <line x1="0" y1="0" x2="300" y2="0"/><line x1="0" y1="300" x2="300" y2="300"/>
+    <line x1="0" y1="0" x2="0" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/>
+  </g>
+
+  <use xlink:href="#med" transform="translate(150,150)"/>
+  <use xlink:href="#med" transform="translate(0,0)"/>
+  <use xlink:href="#med" transform="translate(300,0)"/>
+  <use xlink:href="#med" transform="translate(0,300)"/>
+  <use xlink:href="#med" transform="translate(300,300)"/>
+  <use xlink:href="#small" transform="translate(150,0)"/>
+  <use xlink:href="#small" transform="translate(0,150)"/>
+  <use xlink:href="#small" transform="translate(300,150)"/>
+  <use xlink:href="#small" transform="translate(150,300)"/>
+</svg>

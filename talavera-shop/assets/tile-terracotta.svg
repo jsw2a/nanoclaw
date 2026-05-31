@@ -1,23 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <!-- Terracotta "puebla" style: white relief petals on clay -->
-  <rect width="120" height="120" fill="#bd6a3c"/>
-  <g fill="#f4ece0">
-    <circle cx="60" cy="60" r="6"/>
-    <g>
-      <ellipse cx="60" cy="34" rx="6" ry="13"/>
-      <ellipse cx="60" cy="86" rx="6" ry="13"/>
-      <ellipse cx="34" cy="60" rx="13" ry="6"/>
-      <ellipse cx="86" cy="60" rx="13" ry="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Bold seamless Talavera tile — cream relief medallions on terracotta barro -->
+  <defs>
+    <path id="petT" d="M0,-18 C13,-42 13,-58 0,-76 C-13,-58 -13,-42 0,-18 Z" fill="#f4ead6"/>
+    <path id="pinT" d="M0,-14 C7,-30 7,-42 0,-54 C-7,-42 -7,-30 0,-14 Z" fill="#f4ead6"/>
+    <g id="medT">
+      <use xlink:href="#petT" transform="rotate(0)"/>
+      <use xlink:href="#petT" transform="rotate(45)"/>
+      <use xlink:href="#petT" transform="rotate(90)"/>
+      <use xlink:href="#petT" transform="rotate(135)"/>
+      <use xlink:href="#petT" transform="rotate(180)"/>
+      <use xlink:href="#petT" transform="rotate(225)"/>
+      <use xlink:href="#petT" transform="rotate(270)"/>
+      <use xlink:href="#petT" transform="rotate(315)"/>
+      <use xlink:href="#pinT" transform="rotate(22.5)"/>
+      <use xlink:href="#pinT" transform="rotate(67.5)"/>
+      <use xlink:href="#pinT" transform="rotate(112.5)"/>
+      <use xlink:href="#pinT" transform="rotate(157.5)"/>
+      <use xlink:href="#pinT" transform="rotate(202.5)"/>
+      <use xlink:href="#pinT" transform="rotate(247.5)"/>
+      <use xlink:href="#pinT" transform="rotate(292.5)"/>
+      <use xlink:href="#pinT" transform="rotate(337.5)"/>
+      <circle r="15" fill="none" stroke="#f4ead6" stroke-width="3.5"/>
+      <circle r="6.5" fill="#f4ead6"/>
+      <g fill="#1f3c9c">
+        <circle cx="0" cy="-60" r="4.5"/>
+        <circle cx="0" cy="60" r="4.5"/>
+        <circle cx="-60" cy="0" r="4.5"/>
+        <circle cx="60" cy="0" r="4.5"/>
+      </g>
     </g>
-    <g transform="rotate(45 60 60)">
-      <ellipse cx="60" cy="38" rx="5" ry="11"/>
-      <ellipse cx="60" cy="82" rx="5" ry="11"/>
-      <ellipse cx="38" cy="60" rx="11" ry="5"/>
-      <ellipse cx="82" cy="60" rx="11" ry="5"/>
+    <g id="smallT">
+      <use xlink:href="#pinT" transform="rotate(0) scale(.78)"/>
+      <use xlink:href="#pinT" transform="rotate(90) scale(.78)"/>
+      <use xlink:href="#pinT" transform="rotate(180) scale(.78)"/>
+      <use xlink:href="#pinT" transform="rotate(270) scale(.78)"/>
+      <use xlink:href="#pinT" transform="rotate(45) scale(.5)"/>
+      <use xlink:href="#pinT" transform="rotate(135) scale(.5)"/>
+      <use xlink:href="#pinT" transform="rotate(225) scale(.5)"/>
+      <use xlink:href="#pinT" transform="rotate(315) scale(.5)"/>
+      <circle r="5" fill="#f4ead6"/>
     </g>
-    <circle cx="60" cy="14" r="3"/>
-    <circle cx="60" cy="106" r="3"/>
-    <circle cx="14" cy="60" r="3"/>
-    <circle cx="106" cy="60" r="3"/>
+  </defs>
+
+  <rect width="300" height="300" fill="#bd6a3c"/>
+  <g stroke="#9c4f28" stroke-width="2.5" opacity="0.55">
+    <line x1="0" y1="0" x2="300" y2="0"/><line x1="0" y1="300" x2="300" y2="300"/>
+    <line x1="0" y1="0" x2="0" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/>
   </g>
+
+  <use xlink:href="#medT" transform="translate(150,150)"/>
+  <use xlink:href="#medT" transform="translate(0,0)"/>
+  <use xlink:href="#medT" transform="translate(300,0)"/>
+  <use xlink:href="#medT" transform="translate(0,300)"/>
+  <use xlink:href="#medT" transform="translate(300,300)"/>
+  <use xlink:href="#smallT" transform="translate(150,0)"/>
+  <use xlink:href="#smallT" transform="translate(0,150)"/>
+  <use xlink:href="#smallT" transform="translate(300,150)"/>
+  <use xlink:href="#smallT" transform="translate(150,300)"/>
 </svg>
