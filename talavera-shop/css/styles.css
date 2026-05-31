@@ -198,7 +198,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
 .piece:not(.flip) .piece-index { right: 4%; }
 .piece.flip .piece-index { left: 4%; }
 
-.piece-figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(1.02); }
+.piece-figure img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(1.02); }
 /* vertical category label riding the figure edge */
 .piece-cat { position: absolute; top: 0; writing-mode: vertical-rl; color: var(--muted); }
 .piece:not(.flip) .piece-cat { left: -1.7rem; }
