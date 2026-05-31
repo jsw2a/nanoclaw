@@ -59,7 +59,7 @@ document.getElementById("wares").innerHTML = PRODUCTS.map((p, i) => `
     <div class="ware-media">
       <span class="ware-num">${String(i + 1).padStart(2, "0")}</span>
       <div class="ware-frame">
-        <img src="${p.img}" alt="${p.name}" loading="lazy"
+        <img src="${p.img}" alt="${p.name}"
              onerror="this.onerror=null;this.src='${p.fallback}'" />
       </div>
       <span class="ware-chip" aria-hidden="true"></span>
