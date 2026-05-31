@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="22" viewBox="0 0 64 22" fill="#e7d9bd">
+  <!-- Hairline Talavera band: a small medallion, diamonds at the seams so it tiles -->
+  <defs>
+    <path id="rp" d="M0,-3 C2,-7 2,-9 0,-11 C-2,-9 -2,-7 0,-3 Z"/>
+  </defs>
+  <g transform="translate(32,11)">
+    <use xlink:href="#rp" transform="rotate(0)"/>
+    <use xlink:href="#rp" transform="rotate(45)"/>
+    <use xlink:href="#rp" transform="rotate(90)"/>
+    <use xlink:href="#rp" transform="rotate(135)"/>
+    <use xlink:href="#rp" transform="rotate(180)"/>
+    <use xlink:href="#rp" transform="rotate(225)"/>
+    <use xlink:href="#rp" transform="rotate(270)"/>
+    <use xlink:href="#rp" transform="rotate(315)"/>
+    <circle r="2.2"/>
+  </g>
+  <path d="M0,11 l4,-4 l4,4 l-4,4 Z"/>
+  <path d="M64,11 l-4,-4 l-4,4 l4,4 Z"/>
+  <path d="M16,11 l2.5,-2.5 l2.5,2.5 l-2.5,2.5 Z" opacity=".75"/>
+  <path d="M48,11 l-2.5,-2.5 l-2.5,2.5 l2.5,2.5 Z" opacity=".75"/>
+</svg>

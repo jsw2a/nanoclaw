@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Refined line-art Talavera medallion — the brand mark -->
+  <defs>
+    <path id="mp" d="M0,-7 C5,-16 5,-22 0,-29 C-5,-22 -5,-16 0,-7 Z"/>
+    <path id="mq" d="M0,-6 C3,-13 3,-18 0,-23 C-3,-18 -3,-13 0,-6 Z"/>
+  </defs>
+  <g transform="translate(32,32)" fill="none" stroke="#2c5c8f" stroke-width="2">
+    <use xlink:href="#mp" transform="rotate(0)"/>
+    <use xlink:href="#mp" transform="rotate(90)"/>
+    <use xlink:href="#mp" transform="rotate(180)"/>
+    <use xlink:href="#mp" transform="rotate(270)"/>
+    <use xlink:href="#mq" transform="rotate(45)"/>
+    <use xlink:href="#mq" transform="rotate(135)"/>
+    <use xlink:href="#mq" transform="rotate(225)"/>
+    <use xlink:href="#mq" transform="rotate(315)"/>
+    <circle r="6"/>
+    <circle r="2.4" fill="#2c5c8f"/>
+  </g>
+</svg>
