@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 28" width="600" height="28" preserveAspectRatio="none">
+  <!-- A single hand-painted cobalt brushstroke, tapered at both ends -->
+  <defs>
+    <filter id="bp" x="-5%" y="-60%" width="110%" height="220%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <path filter="url(#bp)" fill="#27468f"
+        d="M4,15 C120,9 240,8 300,9 C400,10 500,11 596,13 C500,17 400,18 300,18 C220,18 120,19 4,16 C2,15.6 2,15.2 4,15 Z"/>
+</svg>

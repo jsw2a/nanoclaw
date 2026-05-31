@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Painterly polychrome Talavera bloom: broad lobed petals with painted
+       outlines, roughened by a turbulence-displacement filter so the vector
+       reads as hand-brushed ink-on-glaze. -->
+  <defs>
+    <filter id="paint" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="3" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- broad outer petal: a full rounded teardrop with a notched, lobed tip -->
+    <g id="petal">
+      <path d="M0,-30
+               C-26,-44 -34,-74 -20,-100
+               C-14,-112 -6,-118 0,-128
+               C6,-118 14,-112 20,-100
+               C34,-74 26,-44 0,-30 Z"
+            fill="#27468f" stroke="#16294f" stroke-width="3"/>
+      <!-- lighter painted highlight inside the petal -->
+      <path d="M0,-44 C-12,-56 -15,-78 -7,-98 C-3,-106 0,-108 0,-108
+               C0,-108 3,-106 7,-98 C15,-78 12,-56 0,-44 Z"
+            fill="#3a63b8"/>
+    </g>
+    <!-- inner short petal -->
+    <g id="ipetal">
+      <path d="M0,-22 C-15,-32 -20,-50 -12,-66 C-7,-74 0,-78 0,-78
+               C0,-78 7,-74 12,-66 C20,-50 15,-32 0,-22 Z"/>
+    </g>
+  </defs>
+
+  <g transform="translate(150,150)" filter="url(#paint)">
+    <!-- outer cobalt petals -->
+    <g>
+      <use xlink:href="#petal" transform="rotate(0)"/>
+      <use xlink:href="#petal" transform="rotate(60)"/>
+      <use xlink:href="#petal" transform="rotate(120)"/>
+      <use xlink:href="#petal" transform="rotate(180)"/>
+      <use xlink:href="#petal" transform="rotate(240)"/>
+      <use xlink:href="#petal" transform="rotate(300)"/>
+    </g>
+    <!-- inner ring, offset, alternating saffron + green -->
+    <g>
+      <use xlink:href="#ipetal" fill="#d99a2b" transform="rotate(30)"/>
+      <use xlink:href="#ipetal" fill="#3f7d54" transform="rotate(90)"/>
+      <use xlink:href="#ipetal" fill="#d99a2b" transform="rotate(150)"/>
+      <use xlink:href="#ipetal" fill="#3f7d54" transform="rotate(210)"/>
+      <use xlink:href="#ipetal" fill="#d99a2b" transform="rotate(270)"/>
+      <use xlink:href="#ipetal" fill="#3f7d54" transform="rotate(330)"/>
+    </g>
+    <!-- center rosette -->
+    <circle r="34" fill="#b23a3a" stroke="#16294f" stroke-width="3"/>
+    <circle r="20" fill="#f4ead6"/>
+    <circle r="20" fill="none" stroke="#b23a3a" stroke-width="3"/>
+    <circle r="8" fill="#27468f"/>
+    <!-- tiny stamen dashes around the center -->
+    <g stroke="#16294f" stroke-width="2.4" stroke-linecap="round">
+      <line x1="0" y1="-28" x2="0" y2="-34"/>
+      <line x1="24" y1="-14" x2="29" y2="-17"/>
+      <line x1="24" y1="14" x2="29" y2="17"/>
+      <line x1="0" y1="28" x2="0" y2="34"/>
+      <line x1="-24" y1="14" x2="-29" y2="17"/>
+      <line x1="-24" y1="-14" x2="-29" y2="-17"/>
+    </g>
+  </g>
+</svg>

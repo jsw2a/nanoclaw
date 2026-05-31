@@ -309,3 +309,66 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
   .footer-inner { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ============================================================
+   PAINTERLY LAYER — hand-painted Talavera florals & brushwork
+   bleeding into the editorial structure. Decorative only:
+   all marked aria-hidden, none affect reading order.
+   ============================================================ */
+
+/* floating blooms that bleed off section edges */
+.bloom {
+  position: absolute; z-index: 0; pointer-events: none; user-select: none;
+  background: url("../assets/bloom.svg") center/contain no-repeat;
+}
+/* hero: a big bloom drifting off the top-right, behind the wordmark */
+.hero { position: relative; }
+.hero .bloom-a { width: clamp(220px, 34vw, 460px); aspect-ratio: 1; top: -8%; right: -6%; opacity: .9; }
+.hero .bloom-b { width: clamp(120px, 16vw, 210px); aspect-ratio: 1; bottom: 8%; right: 12%; opacity: .5; transform: rotate(18deg); }
+/* let the painterly hero motif retire in favour of the blooms */
+.hero-motif { display: none; }
+
+/* manifesto: a bloom bleeding off the left margin */
+.manifesto { position: relative; }
+.manifesto .bloom-a { width: clamp(150px, 20vw, 290px); aspect-ratio: 1; top: 40%; left: -10%; opacity: .85; transform: rotate(-12deg); }
+
+/* a hand-painted sprig flourish under the collection heading */
+.ledger { position: relative; }
+.ledger-sprig { display: block; width: 220px; max-width: 60%; height: auto; margin-top: 1.4rem; }
+
+/* each piece: a bloom tucked into the empty quadrant, low opacity, plus
+   a brush-rule replacing the hairline divider */
+.piece { position: relative; }
+.piece .bloom {
+  width: clamp(130px, 17vw, 240px); aspect-ratio: 1; opacity: .5;
+  top: 6%;
+}
+.piece:not(.flip) .bloom { left: -4%; }
+.piece.flip .bloom { right: -4%; }
+.piece + .piece { border-top: none; }
+.piece + .piece::before {
+  content: ""; position: absolute; top: 0; left: var(--bleed); right: var(--bleed); height: 16px;
+  background: url("../assets/brushrule.svg") center/100% 16px no-repeat; opacity: .55;
+}
+
+/* story: blooms framing the inverted pull-quote */
+.story { position: relative; overflow: hidden; }
+.story .bloom-a { width: clamp(160px, 22vw, 320px); aspect-ratio: 1; top: -8%; right: -5%; opacity: .85; }
+.story .bloom-b { width: clamp(110px, 14vw, 190px); aspect-ratio: 1; bottom: -6%; left: -4%; opacity: .55; transform: rotate(150deg); }
+.story-eyebrow, .story-quote, .story-facts { position: relative; z-index: 1; }
+
+/* signup: a brush rule above + a bloom accent */
+.signup { position: relative; }
+.signup::before {
+  content: ""; position: absolute; top: 0; left: var(--bleed); right: var(--bleed); height: 18px;
+  background: url("../assets/brushrule.svg") center/100% 18px no-repeat; opacity: .5;
+}
+.signup .bloom-a { width: clamp(120px, 15vw, 210px); aspect-ratio: 1; bottom: -10%; right: 2%; opacity: .7; transform: rotate(-20deg); }
+.signup-grid { position: relative; z-index: 1; }
+
+@media (max-width: 880px) {
+  .hero .bloom-b, .manifesto .bloom-a, .piece .bloom, .signup .bloom-a { display: none; }
+  .hero .bloom-a { width: 200px; top: -4%; right: -10%; }
+  .story .bloom-b { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 220 120" width="220" height="120">
+  <!-- Painterly Talavera sprig — a curving cobalt vine with leaves and buds,
+       for section flourishes / dividers. Hand-painted edge via displacement. -->
+  <defs>
+    <filter id="paint2" x="-15%" y="-30%" width="130%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.03" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <path id="leaf" d="M0,0 C16,-10 34,-9 46,4 C30,9 12,9 0,0 Z"/>
+  </defs>
+  <g filter="url(#paint2)">
+    <!-- stem -->
+    <path d="M6,86 C60,80 70,40 110,40 C150,40 162,80 214,70" fill="none" stroke="#27468f" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- leaves along the stem -->
+    <use xlink:href="#leaf" fill="#3f7d54" transform="translate(48,70) rotate(-32)"/>
+    <use xlink:href="#leaf" fill="#3f7d54" transform="translate(150,52) rotate(150) scale(.9)"/>
+    <use xlink:href="#leaf" fill="#3f7d54" transform="translate(96,40) rotate(-70) scale(.8)"/>
+    <!-- buds -->
+    <g>
+      <circle cx="110" cy="30" r="11" fill="#d99a2b"/>
+      <circle cx="110" cy="30" r="11" fill="none" stroke="#27468f" stroke-width="2.5"/>
+      <circle cx="210" cy="70" r="8" fill="#b23a3a"/>
+      <circle cx="8" cy="86" r="8" fill="#b23a3a"/>
+    </g>
+    <!-- little petal pair at the crown bud -->
+    <g fill="#27468f">
+      <path d="M110,18 C104,6 104,0 110,-8 C116,0 116,6 110,18 Z"/>
+    </g>
+  </g>
+</svg>
