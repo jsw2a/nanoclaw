@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Seamless terracotta "barro" tile: cream raised-dot petals on clay. -->
+  <rect width="200" height="200" fill="#bd6a3c"/>
+  <g fill="#f3e9d8">
+    <!-- center flower -->
+    <circle cx="100" cy="100" r="6"/>
+    <g>
+      <ellipse cx="100" cy="64" rx="7" ry="16"/>
+      <ellipse cx="100" cy="136" rx="7" ry="16"/>
+      <ellipse cx="64" cy="100" rx="16" ry="7"/>
+      <ellipse cx="136" cy="100" rx="16" ry="7"/>
+    </g>
+    <g transform="rotate(45 100 100)">
+      <ellipse cx="100" cy="68" rx="6" ry="13"/>
+      <ellipse cx="100" cy="132" rx="6" ry="13"/>
+      <ellipse cx="68" cy="100" rx="13" ry="6"/>
+      <ellipse cx="132" cy="100" rx="13" ry="6"/>
+    </g>
+    <!-- corner flowers (quarter, tile seamlessly) -->
+    <g>
+      <circle cx="0" cy="0" r="5"/>
+      <ellipse cx="0" cy="30" rx="6" ry="13"/>
+      <ellipse cx="30" cy="0" rx="13" ry="6"/>
+    </g>
+    <g transform="translate(200,0) scale(-1,1)">
+      <circle cx="0" cy="0" r="5"/>
+      <ellipse cx="0" cy="30" rx="6" ry="13"/>
+      <ellipse cx="30" cy="0" rx="13" ry="6"/>
+    </g>
+    <g transform="translate(0,200) scale(1,-1)">
+      <circle cx="0" cy="0" r="5"/>
+      <ellipse cx="0" cy="30" rx="6" ry="13"/>
+      <ellipse cx="30" cy="0" rx="13" ry="6"/>
+    </g>
+    <g transform="translate(200,200) scale(-1,-1)">
+      <circle cx="0" cy="0" r="5"/>
+      <ellipse cx="0" cy="30" rx="6" ry="13"/>
+      <ellipse cx="30" cy="0" rx="13" ry="6"/>
+    </g>
+  </g>
+</svg>

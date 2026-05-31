@@ -8,7 +8,7 @@ const PRODUCTS = [
     price: 68,
     img: "images/pitchers.jpg",
     fallback: "assets/art-pitchers.svg",
-    desc: "Hand-thrown jarras in cobalt and terracotta. A pour-worthy centerpiece, sold individually.",
+    desc: "Hand-thrown jarras in cobalt and terracotta. A pour-worthy centerpiece for water, wine, or a fistful of branches — sold individually, so you can mix the palettes.",
   },
   {
     id: "vases",
@@ -17,7 +17,7 @@ const PRODUCTS = [
     price: 34,
     img: "images/vases.jpg",
     fallback: "assets/art-vases.svg",
-    desc: "Little vessels for a single stem or a fistful of wildflowers. Cobalt or clay.",
+    desc: "Little vessels for a single stem or a gathered handful of wildflowers. Cobalt florals or warm clay — each one a small painted world.",
   },
   {
     id: "dishes",
@@ -26,7 +26,7 @@ const PRODUCTS = [
     price: 22,
     img: "images/dishes.jpg",
     fallback: "assets/art-dishes.svg",
-    desc: "Catch-all dishes for rings, salt, or olives. Each one a tiny painted medallion.",
+    desc: "Catch-all dishes for rings, salt, olives, or a stray earring. Each is a tiny hand-painted medallion — the easiest way to start a collection.",
   },
   {
     id: "tumblers",
@@ -35,7 +35,7 @@ const PRODUCTS = [
     price: 28,
     img: "images/tumblers.jpg",
     fallback: "assets/art-tumblers.svg",
-    desc: "Stout little cups for mezcal, agua fresca, or morning café. Set of two.",
+    desc: "Stout little cups for mezcal, agua fresca, or the morning café. Sold as a set of two — they stack the cobalt and the clay side by side.",
   },
   {
     id: "bowls",
@@ -44,32 +44,40 @@ const PRODUCTS = [
     price: 56,
     img: "images/bowls.jpg",
     fallback: "assets/art-bowls.svg",
-    desc: "Serving and prep bowls that nest together. Mix the blue florals with the clay.",
+    desc: "Serving and prep bowls that nest neatly together. Mix the bold blue florals with the creamy clay relief — beautiful enough to leave on the counter.",
   },
 ];
 
-/* ---- Render product grid ---- */
-const grid = document.getElementById("productGrid");
-grid.innerHTML = PRODUCTS.map((p) => `
-  <article class="card">
-    <div class="card-media">
-      <span class="card-tag">${p.tag}</span>
-      <img src="${p.img}" alt="${p.name}" loading="lazy"
-           onerror="this.onerror=null;this.src='${p.fallback}'" />
+/* ---- Nav links ---- */
+document.getElementById("nav").innerHTML =
+  PRODUCTS.map((p) => `<a href="#${p.id}">${p.tag}</a>`).join("") +
+  `<a href="#story">Story</a>`;
+
+/* ---- Render immersive ware spreads ---- */
+document.getElementById("wares").innerHTML = PRODUCTS.map((p, i) => `
+  <section class="ware" id="${p.id}">
+    <div class="ware-media">
+      <span class="ware-num">${String(i + 1).padStart(2, "0")}</span>
+      <div class="ware-frame">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"
+             onerror="this.onerror=null;this.src='${p.fallback}'" />
+      </div>
+      <span class="ware-chip" aria-hidden="true"></span>
     </div>
-    <div class="card-body">
+    <div class="ware-body">
+      <span class="tag">${p.tag}</span>
       <h3>${p.name}</h3>
-      <p class="card-desc">${p.desc}</p>
-      <div class="card-row">
+      <p class="ware-desc">${p.desc}</p>
+      <div class="ware-row">
         <span class="price">$${p.price}</span>
         <button class="add" data-id="${p.id}">Add to bag</button>
       </div>
     </div>
-  </article>
+  </section>
 `).join("");
 
-/* ---- Cart state ---- */
-const cart = new Map(); // id -> qty
+/* ---- Cart ---- */
+const cart = new Map();
 const cartCount = document.getElementById("cartCount");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
@@ -114,12 +122,10 @@ function render() {
   }).join("");
 }
 
-/* ---- Events ---- */
-grid.addEventListener("click", (e) => {
+document.getElementById("wares").addEventListener("click", (e) => {
   const btn = e.target.closest(".add");
   if (!btn) return;
-  const id = btn.dataset.id;
-  cart.set(id, (cart.get(id) || 0) + 1);
+  cart.set(btn.dataset.id, (cart.get(btn.dataset.id) || 0) + 1);
   render();
   openCart();
 });
