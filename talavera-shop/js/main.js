@@ -78,3 +78,63 @@ document.getElementById("newsForm").addEventListener("submit", (e) => {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 render();
+
+/* ===== Motion (progressive enhancement) ===========================
+   Content is visible without JS; these effects only switch on once we
+   add `js-ready`, and CSS disables them under prefers-reduced-motion. */
+(function () {
+  const root = document.documentElement;
+  root.classList.add("js-ready");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* hero entrance — type rises in sequence, tiles drift in */
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    [...hero.querySelectorAll(".hero-type > *")].forEach((el, i) => el.style.setProperty("--i", i));
+    requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add("is-in")));
+  }
+
+  /* scroll reveals */
+  const sels = [
+    ".manifesto .m-statement", ".manifesto .m-note",
+    ".ledger", ".piece", ".cenefa-band",
+    ".story-eyebrow", ".story-quote",
+    ".about-talavera .at-head", ".about-talavera .at-body",
+    ".signup h2", ".signup-form",
+  ];
+  const targets = [];
+  sels.forEach((s) => document.querySelectorAll(s).forEach((el) => { el.classList.add("reveal"); targets.push(el); }));
+  document.querySelectorAll(".story-facts > div").forEach((el, i) => {
+    el.classList.add("reveal"); el.style.setProperty("--i", i); targets.push(el);
+  });
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+    targets.forEach((el) => io.observe(el));
+  } else {
+    targets.forEach((el) => el.classList.add("in"));
+  }
+
+  /* condensing masthead */
+  const mast = document.querySelector(".masthead");
+  if (mast) {
+    const onScroll = () => mast.classList.toggle("scrolled", window.scrollY > 24);
+    onScroll();
+    addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* subtle hero-tile parallax */
+  const tiles = document.querySelector(".hero-tiles");
+  if (tiles && !reduce) {
+    let ticking = false;
+    addEventListener("scroll", () => {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(() => {
+        tiles.style.backgroundPositionY = Math.min(window.scrollY, 800) * 0.16 + "px";
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+})();
