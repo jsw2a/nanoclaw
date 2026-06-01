@@ -47,7 +47,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 /* keep anchored sections clear of the sticky masthead */
-#about, #index, #pitchers, #vases, #dishes, #tumblers, #bowls, #story, #news { scroll-margin-top: 84px; }
+#about, #index, #pitchers, #vases, #dishes, #tumblers, #bowls, #story, #about-talavera, #news { scroll-margin-top: 84px; }
 body {
   margin: 0;
   font-family: var(--sans);
@@ -143,7 +143,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
   letter-spacing: -0.03em; font-weight: 400; color: var(--paper-0);
 }
 .hero h1 em { display: block; font-weight: 500; margin-left: .04em; }
-.hero-lede { font-size: 1.12rem; line-height: 1.55; color: rgba(243, 236, 219, .82); max-width: 34ch; margin: 2rem 0 2.2rem; }
+.hero-sub { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.15rem, 2.2vw, 1.6rem); color: var(--saffron); margin: 1.1rem 0 0; }
+.hero-lede { font-size: 1.12rem; line-height: 1.55; color: rgba(243, 236, 219, .82); max-width: 34ch; margin: 1.2rem 0 2.2rem; }
 .hero .link-underline { color: var(--paper-0); }
 .hero-scroll {
   position: absolute; right: var(--bleed); bottom: clamp(3rem, 9vh, 7rem);
@@ -372,3 +373,53 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
   .story .bloom-b { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ============================================================
+   ABOUT TALAVERA — cited authority content (SEO/GEO)
+   ============================================================ */
+.about-talavera {
+  position: relative; overflow: hidden;
+  max-width: var(--maxw); margin: 0 auto;
+  padding: clamp(4rem, 11vh, 8rem) var(--bleed);
+  border-top: 1px solid var(--hair);
+}
+.about-talavera .bloom-a {
+  width: clamp(150px, 20vw, 300px); aspect-ratio: 1;
+  top: 8%; right: -7%; opacity: .5; transform: rotate(14deg);
+}
+.at-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter);
+}
+.at-head { grid-column: 1 / 5; }
+.at-head .ledger-label { color: var(--terracotta); display: block; margin-bottom: 1.1rem; }
+.at-head h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: .98; font-weight: 400; }
+.at-body { grid-column: 6 / 13; }
+.at-body p { font-size: 1.06rem; color: var(--muted); margin: 0 0 1.1rem; max-width: 62ch; }
+.at-body p strong { color: var(--ink); font-weight: 500; }
+.at-body em { color: var(--cobalt); }
+.at-facts {
+  list-style: none; padding: 1.4rem 0; margin: 1.6rem 0;
+  border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem 2rem;
+}
+.at-facts li { font-size: .92rem; color: var(--muted); display: flex; gap: .7rem; align-items: baseline; }
+.at-facts li span {
+  font-family: var(--display); font-style: italic; font-weight: 500;
+  font-size: 1.15rem; color: var(--cobalt); flex: 0 0 auto; min-width: 3.4em;
+}
+.at-sources { font-size: .9rem; color: var(--muted); margin-top: 1.4rem; }
+.at-sources a {
+  color: var(--cobalt); font-weight: 500;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  padding-bottom: 1px; transition: background-size .3s ease;
+}
+.at-sources a:hover { background-size: 0% 1px; }
+
+@media (max-width: 880px) {
+  .about-talavera .bloom-a { display: none; }
+  .at-head, .at-body { grid-column: 1 / -1; }
+  .at-head { margin-bottom: 1.4rem; }
+  .at-facts { grid-template-columns: 1fr; }
+}
