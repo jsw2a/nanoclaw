@@ -248,7 +248,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
 
 /* ============================================================ FOOTER */
 .footer { background: var(--cobalt-deep); color: var(--paper-0); }
-.footer-band { height: 22px; background: url("../assets/rule-talavera.svg") repeat-x center; background-size: auto 22px; opacity: .9; }
+.footer-band { height: 46px; background: url("../assets/cenefa.svg") center / auto 46px repeat-x; }
 .footer-inner {
   max-width: var(--maxw); margin: 0 auto;
   padding: clamp(3rem, 7vh, 5rem) var(--bleed) 2.5rem;
@@ -422,4 +422,41 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-heig
   .at-head, .at-body { grid-column: 1 / -1; }
   .at-head { margin-bottom: 1.4rem; }
   .at-facts { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   TALAVERA TILE SYSTEM — authentic azulejo + cenefa
+   ============================================================ */
+
+/* Hero: a tiled azulejo wall bleeding in from the right, behind the type */
+.hero-tiles {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: clamp(300px, 46%, 640px);
+  background: url("../assets/tile.svg") top right / clamp(116px, 14vw, 168px) auto;
+  opacity: .97;
+  /* feather the inner edge so the tiles dissolve into the cobalt ground */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 34%, #000 100%);
+  box-shadow: inset 26px 0 60px -20px rgba(22,50,79,.65);
+}
+.hero-type { position: relative; z-index: 3; }
+.hero-rail { z-index: 3; }
+
+/* Cenefa: a hand-painted border strip used as a section divider */
+.cenefa-band {
+  height: 46px;
+  background: url("../assets/cenefa.svg") center / auto 46px repeat-x;
+}
+
+@media (max-width: 880px) {
+  /* on small screens a full tile field would crowd the text, so retire it for
+     a slim cenefa "baseboard" along the foot of the hero — legible and tidy */
+  .hero-tiles {
+    top: auto; bottom: 0; width: 100%; height: 44px;
+    background: url("../assets/cenefa.svg") center / auto 44px repeat-x;
+    -webkit-mask-image: none; mask-image: none;
+    box-shadow: none; opacity: 1;
+  }
+  .hero { padding-bottom: 4.75rem; }
+  .cenefa-band { height: 38px; background-size: auto 38px; }
 }
