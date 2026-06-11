@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="theme-color" content="#bf0d3e" />
+<title>DC Metro — Red Line Challenge</title>
+<style>
+  :root {
+    --red: #bf0d3e;          /* WMATA Red Line */
+    --bg: #0f1115;
+    --panel: #181b22;
+    --panel-2: #20242e;
+    --ink: #e9edf3;
+    --muted: #9aa3b2;
+    --ok: #2fbf71;
+    --line: #c2143f;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; height: 100%;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overscroll-behavior: none;
+  }
+  body { display: flex; flex-direction: column; min-height: 100dvh; }
+
+  header {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, #1c1f27, #14161c);
+    border-bottom: 1px solid #2a2f3a;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .badge {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--red); flex: 0 0 auto;
+    box-shadow: 0 0 0 3px rgba(191,13,62,.25);
+  }
+  header h1 { font-size: 15px; margin: 0; font-weight: 700; letter-spacing: .2px; }
+  header .sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .stats { margin-left: auto; display: flex; gap: 14px; align-items: center; }
+  .stat { text-align: right; line-height: 1.05; }
+  .stat .v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 18px; }
+  .stat .k { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
+
+  main {
+    flex: 1 1 auto;
+    display: flex; flex-direction: column;
+    min-height: 0;
+  }
+  .mapwrap {
+    flex: 1 1 60%;
+    min-height: 0;
+    position: relative;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, #1a1d25, transparent),
+      var(--bg);
+    overflow: hidden;
+  }
+  svg { width: 100%; height: 100%; display: block; touch-action: none; }
+
+  .dot { fill: var(--panel-2); stroke: var(--muted); stroke-width: 2.5; transition: fill .15s, stroke .15s; }
+  .dot.transfer { stroke: #cfd6e2; stroke-width: 3.5; }
+  .dot.target { fill: rgba(191,13,62,.25); stroke: var(--red); }
+  .dot.filled { fill: var(--red); stroke: #fff; }
+  .stationlabel { fill: var(--ink); font-size: 19px; font-weight: 600; pointer-events: none; }
+  .stationlabel.filled { fill: #fff; }
+
+  .tray {
+    flex: 0 0 auto;
+    max-height: 40%;
+    overflow-y: auto;
+    background: var(--panel);
+    border-top: 1px solid #2a2f3a;
+    padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+    display: flex; flex-wrap: wrap; gap: 8px;
+    align-content: flex-start;
+  }
+  .chip {
+    user-select: none; touch-action: none;
+    background: var(--panel-2);
+    border: 1px solid #333a46;
+    color: var(--ink);
+    padding: 9px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    cursor: grab; white-space: nowrap;
+    box-shadow: 0 1px 0 rgba(0,0,0,.3);
+  }
+  .chip:active { cursor: grabbing; }
+  .chip.dragging {
+    position: fixed; z-index: 50; cursor: grabbing;
+    border-color: var(--red);
+    box-shadow: 0 8px 24px rgba(0,0,0,.5), 0 0 0 2px rgba(191,13,62,.5);
+    transform: scale(1.06);
+  }
+  .placeholder { opacity: 0; pointer-events: none; }
+  @keyframes shake {
+    0%,100%{ transform: translateX(0) }
+    20%{ transform: translateX(-6px) } 40%{ transform: translateX(6px) }
+    60%{ transform: translateX(-4px) } 80%{ transform: translateX(4px) }
+  }
+  .chip.reject { animation: shake .3s ease; border-color: #e0556e; }
+
+  .overlay {
+    position: fixed; inset: 0; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(8,9,12,.72); backdrop-filter: blur(4px);
+    z-index: 100; padding: 24px;
+  }
+  .overlay.show { display: flex; }
+  .card {
+    background: var(--panel); border: 1px solid #2a2f3a;
+    border-radius: 16px; padding: 26px 24px; text-align: center;
+    max-width: 340px; width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  }
+  .card h2 { margin: 0 0 6px; font-size: 22px; }
+  .card p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  .card .big { font-size: 40px; font-weight: 800; color: var(--red); font-variant-numeric: tabular-nums; margin: 14px 0 4px; }
+  button.btn {
+    margin-top: 18px; width: 100%;
+    background: var(--red); color: #fff; border: 0;
+    padding: 13px; border-radius: 10px; font-size: 15px; font-weight: 700;
+    cursor: pointer;
+  }
+  button.ghost {
+    background: transparent; border: 1px solid #3a4250; color: var(--ink);
+    padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="badge"></div>
+    <div>
+      <h1>Red Line Challenge</h1>
+      <div class="sub">Drag each station name to its stop</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v" id="timer">0:00</div><div class="k">Time</div></div>
+      <div class="stat"><div class="v" id="progress">0/27</div><div class="k">Placed</div></div>
+      <button class="ghost" id="restart">Restart</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="mapwrap">
+      <svg id="map" viewBox="0 0 1260 1320" preserveAspectRatio="xMidYMid meet" aria-label="DC Metro Red Line map">
+        <polyline id="route" fill="none" stroke="var(--line)" stroke-width="7"
+                  stroke-linejoin="round" stroke-linecap="round" />
+        <g id="dots"></g>
+        <g id="labels"></g>
+      </svg>
+    </div>
+    <div class="tray" id="tray"></div>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <div class="card">
+      <h2 id="winTitle">Line complete! 🎉</h2>
+      <div class="big" id="winTime">0:00</div>
+      <p id="winSub">All 27 Red Line stations placed.</p>
+      <button class="btn" id="playAgain">Play again</button>
+    </div>
+  </div>
+
+<script>
+/* ---- Red Line stations, north (Shady Grove) to south then up to Glenmont ----
+   Coordinates are real WMATA station lat/long, used to project an accurate
+   schematic. The line's "hook" shape is a product of this real geography. */
+const STATIONS = [
+  { name: "Shady Grove",            lat: 39.1199, lon: -77.1647 },
+  { name: "Rockville",              lat: 39.0840, lon: -77.1464 },
+  { name: "Twinbrook",              lat: 39.0623, lon: -77.1208 },
+  { name: "North Bethesda",         lat: 39.0481, lon: -77.1130 },
+  { name: "Grosvenor–Strathmore",   lat: 39.0294, lon: -77.1043 },
+  { name: "Medical Center",         lat: 39.0001, lon: -77.0972 },
+  { name: "Bethesda",               lat: 38.9844, lon: -77.0944 },
+  { name: "Friendship Heights",     lat: 38.9601, lon: -77.0855 },
+  { name: "Tenleytown–AU",          lat: 38.9479, lon: -77.0794 },
+  { name: "Van Ness–UDC",           lat: 38.9436, lon: -77.0633 },
+  { name: "Cleveland Park",         lat: 38.9349, lon: -77.0580 },
+  { name: "Woodley Park",           lat: 38.9249, lon: -77.0524 },
+  { name: "Dupont Circle",          lat: 38.9097, lon: -77.0434 },
+  { name: "Farragut North",         lat: 38.9032, lon: -77.0397 },
+  { name: "Metro Center",           lat: 38.8983, lon: -77.0281, transfer: true },
+  { name: "Gallery Place",          lat: 38.8983, lon: -77.0219, transfer: true },
+  { name: "Judiciary Square",       lat: 38.8961, lon: -77.0166 },
+  { name: "Union Station",          lat: 38.8975, lon: -77.0066 },
+  { name: "NoMa–Gallaudet U",       lat: 38.9072, lon: -77.0030 },
+  { name: "Rhode Island Ave",       lat: 38.9207, lon: -76.9956 },
+  { name: "Brookland–CUA",          lat: 38.9333, lon: -76.9947 },
+  { name: "Fort Totten",            lat: 38.9518, lon: -77.0021, transfer: true },
+  { name: "Takoma",                 lat: 38.9758, lon: -77.0177 },
+  { name: "Silver Spring",          lat: 38.9938, lon: -77.0312, transfer: true },
+  { name: "Forest Glen",            lat: 39.0151, lon: -77.0428 },
+  { name: "Wheaton",                lat: 39.0387, lon: -77.0511 },
+  { name: "Glenmont",               lat: 39.0613, lon: -77.0529 },
+];
+
+const VB_W = 1260, VB_H = 1320, PAD = 90;
+const LABEL_GAP = 16;
+
+// --- Project lat/long -> SVG coords (equirectangular, corrected for latitude) ---
+function project() {
+  const lats = STATIONS.map(s => s.lat), lons = STATIONS.map(s => s.lon);
+  const midLat = (Math.max(...lats) + Math.min(...lats)) / 2;
+  const k = Math.cos(midLat * Math.PI / 180);
+  // raw planar coords (x grows east, y grows south)
+  const raw = STATIONS.map(s => ({ x: s.lon * k, y: -s.lat }));
+  const xs = raw.map(p => p.x), ys = raw.map(p => p.y);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  const minY = Math.min(...ys), maxY = Math.max(...ys);
+  const spanX = maxX - minX, spanY = maxY - minY;
+  const scale = Math.min((VB_W - 2 * PAD) / spanX, (VB_H - 2 * PAD) / spanY);
+  const offX = (VB_W - spanX * scale) / 2;
+  const offY = (VB_H - spanY * scale) / 2;
+  raw.forEach((p, i) => {
+    STATIONS[i].px = offX + (p.x - minX) * scale;
+    STATIONS[i].py = offY + (p.y - minY) * scale;
+  });
+}
+
+// --- State ---
+let placed = 0, startTime = null, timerId = null, finished = false;
+const filled = new Set();
+
+const svg = document.getElementById('map');
+const dotsG = document.getElementById('dots');
+const labelsG = document.getElementById('labels');
+const route = document.getElementById('route');
+const tray = document.getElementById('tray');
+const elTimer = document.getElementById('timer');
+const elProgress = document.getElementById('progress');
+const overlay = document.getElementById('overlay');
+
+const centerX = VB_W / 2;
+
+function svgEl(tag, attrs) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+function drawMap() {
+  route.setAttribute('points', STATIONS.map(s => `${s.px},${s.py}`).join(' '));
+  dotsG.innerHTML = '';
+  STATIONS.forEach((s, i) => {
+    const c = svgEl('circle', { cx: s.px, cy: s.py, r: s.transfer ? 11 : 9, 'data-i': i });
+    c.setAttribute('class', 'dot' + (s.transfer ? ' transfer' : ''));
+    dotsG.appendChild(c);
+    s.dot = c;
+  });
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildTray() {
+  tray.innerHTML = '';
+  const order = shuffle(STATIONS.map((s, i) => i));
+  order.forEach(i => {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = STATIONS[i].name;
+    chip.dataset.i = i;
+    attachDrag(chip);
+    tray.appendChild(chip);
+  });
+}
+
+function fmt(ms) {
+  const t = Math.floor(ms / 1000);
+  return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0');
+}
+function tick() { if (startTime) elTimer.textContent = fmt(Date.now() - startTime); }
+function startTimer() {
+  if (startTime) return;
+  startTime = Date.now();
+  timerId = setInterval(tick, 250);
+}
+
+// --- Drag handling (pointer events: mouse + touch) ---
+function attachDrag(chip) {
+  let dragging = false, placeholder = null, offX = 0, offY = 0;
+
+  chip.addEventListener('pointerdown', e => {
+    if (finished) return;
+    e.preventDefault();
+    startTimer();
+    dragging = true;
+    chip.setPointerCapture(e.pointerId);
+    const r = chip.getBoundingClientRect();
+    offX = e.clientX - r.left;
+    offY = e.clientY - r.top;
+
+    placeholder = document.createElement('div');
+    placeholder.className = 'chip placeholder';
+    placeholder.style.width = r.width + 'px';
+    placeholder.style.height = r.height + 'px';
+    chip.after(placeholder);
+
+    chip.classList.add('dragging');
+    chip.style.width = r.width + 'px';
+    chip.style.left = r.left + 'px';
+    chip.style.top = r.top + 'px';
+  });
+
+  chip.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    chip.style.left = (e.clientX - offX) + 'px';
+    chip.style.top = (e.clientY - offY) + 'px';
+    const hit = nearestStation(e.clientX, e.clientY);
+    highlight(hit);
+  });
+
+  function end(e) {
+    if (!dragging) return;
+    dragging = false;
+    const hit = nearestStation(e.clientX, e.clientY);
+    highlight(null);
+    const i = +chip.dataset.i;
+
+    if (hit === i) {
+      placeStation(i);
+      placeholder.remove();
+      chip.remove();
+    } else {
+      // wrong (or no) target: snap back to tray slot
+      chip.classList.remove('dragging');
+      chip.style.left = chip.style.top = chip.style.width = '';
+      if (placeholder) placeholder.replaceWith(chip);
+      if (hit !== null) { // dropped on a wrong station -> shake
+        chip.classList.add('reject');
+        setTimeout(() => chip.classList.remove('reject'), 320);
+      }
+    }
+    placeholder = null;
+  }
+  chip.addEventListener('pointerup', end);
+  chip.addEventListener('pointercancel', end);
+}
+
+const HIT_RADIUS = 44; // client px
+function nearestStation(cx, cy) {
+  let best = null, bestD = HIT_RADIUS;
+  STATIONS.forEach((s, i) => {
+    if (filled.has(i)) return;
+    const r = s.dot.getBoundingClientRect();
+    const dx = cx - (r.left + r.width / 2);
+    const dy = cy - (r.top + r.height / 2);
+    const d = Math.hypot(dx, dy);
+    if (d < bestD) { bestD = d; best = i; }
+  });
+  return best;
+}
+
+let lastHi = null;
+function highlight(i) {
+  if (lastHi === i) return;
+  if (lastHi !== null && !filled.has(lastHi))
+    STATIONS[lastHi].dot.classList.remove('target');
+  if (i !== null) STATIONS[i].dot.classList.add('target');
+  lastHi = i;
+}
+
+function placeStation(i) {
+  const s = STATIONS[i];
+  filled.add(i);
+  s.dot.classList.remove('target');
+  s.dot.classList.add('filled');
+
+  const left = s.px < centerX;
+  const label = svgEl('text', {
+    x: left ? s.px - LABEL_GAP : s.px + LABEL_GAP,
+    y: s.py + 6,
+    'text-anchor': left ? 'end' : 'start',
+  });
+  label.setAttribute('class', 'stationlabel filled');
+  label.textContent = s.name;
+  labelsG.appendChild(label);
+
+  placed++;
+  elProgress.textContent = placed + '/' + STATIONS.length;
+  if (placed === STATIONS.length) win();
+}
+
+function win() {
+  finished = true;
+  clearInterval(timerId);
+  const time = fmt(Date.now() - startTime);
+  document.getElementById('winTime').textContent = time;
+  overlay.classList.add('show');
+}
+
+function reset() {
+  finished = false;
+  placed = 0;
+  filled.clear();
+  startTime = null;
+  clearInterval(timerId);
+  elTimer.textContent = '0:00';
+  elProgress.textContent = '0/' + STATIONS.length;
+  labelsG.innerHTML = '';
+  lastHi = null;
+  overlay.classList.remove('show');
+  drawMap();
+  buildTray();
+}
+
+document.getElementById('restart').addEventListener('click', reset);
+document.getElementById('playAgain').addEventListener('click', reset);
+
+// --- Init ---
+project();
+elProgress.textContent = '0/' + STATIONS.length;
+drawMap();
+buildTray();
+</script>
+</body>
+</html>
